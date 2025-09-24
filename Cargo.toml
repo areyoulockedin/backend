@@ -1,0 +1,16 @@
+[package]
+name = "areyoulocked-in-backend"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+axum = "0.8.4"
+axum-server = { version = "0.7.2", features = ["tls-rustls"] }
+dotenvy = "0.15.7"
+rustls = { version = "0.23.32", features = ["ring"] }
+sea-orm = { version = "1.1.16", features = ["runtime-tokio-rustls"] }
+tokio = { version = "1.47.1", features = ["full"] }
+tower = "0.5.2"
+tower-http = { version = "0.6.6", features = ["compression-full", "decompression-full", "trace", "fs", "metrics"] }
+tracing = "0.1.41"
+tracing-subscriber = "0.3.20"
