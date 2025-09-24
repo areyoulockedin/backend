@@ -1,14 +1,12 @@
-{
-  pkgs,
-  rust-overlay,
-}:
-with pkgs;
+{pkgs}:
+with pkgs; let
+  rustToolchain = rust-bin.stable.latest.default.override {
+    extensions = ["rustfmt" "clippy" "rust-analyzer"];
+  };
+in
   mkShell {
-    buildInputs = [
-      rust-bin.stable.latest.default.override
-      {
-        extensions = ["rustfmt" "clippy" "rustanalyzer"];
-      }
+    buildInputs = with pkgs; [
+      rustToolchain
       postgresql
     ];
 

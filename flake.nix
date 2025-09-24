@@ -20,8 +20,9 @@
       system: let
         overlays = [(import rust-overlay)];
         pkgs = import nixpkgs {inherit system overlays;};
+        shellConfig = import ./nix/devshell.nix;
       in {
-        devShells.default = ./nix/shell.nix;
+        devShell = shellConfig {inherit pkgs;};
       }
     );
 }
